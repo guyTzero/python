@@ -1,12 +1,19 @@
 from typing import Optional
 
 from fastapi import FastAPI
-
+from pymongo import MongoClient
 import string    
 import random 
 
 app = FastAPI()
 
+
+client = MongoClient('localhost', 27017)
+
+
+list_of_db = client.list_database_names()
+  
+print("Exists ?",list_of_db)
 
 @app.get("/")
 def read_root():
